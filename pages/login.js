@@ -3,11 +3,13 @@ import { faTwitter, faFacebook, faGoogle } from "@fortawesome/free-brands-svg-ic
 import { faEnvelope, faLock, faUnlockKeyhole, faUser } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
+import { useRouter } from "next/router";
 
 
 const login = () => {
 
     const [reg, setReg] = useState(false);
+    const router = useRouter();
 
     return (
 
@@ -48,7 +50,7 @@ const login = () => {
                         <div className="flex gap-12 md:mt-4">
                             <p className="md:p-2">{!reg ? "Login with" : "Sign In With"}</p>
                             <div className="flex md:gap-3 gap-5 ">
-                                <div className="md:border md:p-2" onClick={()=>{signIn("google")}}><FontAwesomeIcon icon={faGoogle} size="xl" style={{ color: "#2b3a55", }} className="cursor-pointer" /></div>
+                                <div className="md:border md:p-2" onClick={()=>{router.push("/");signIn("google");}}><FontAwesomeIcon icon={faGoogle} size="xl" style={{ color: "#2b3a55", }} className="cursor-pointer" /></div>
                                 <div className="md:border md:p-2" onClick={()=>{signIn("facebook")}}><FontAwesomeIcon icon={faFacebook} size="xl" style={{ color: "#2b3a55", }} className="cursor-pointer" /></div>
                                 <div className="md:border md:p-2" onClick={()=>{signIn("twitter")}}><FontAwesomeIcon icon={faTwitter} size="xl" style={{ color: "#2b3a55", }} className="cursor-pointer" /></div>
                             </div>
