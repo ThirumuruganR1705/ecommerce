@@ -11,6 +11,7 @@ const login = () => {
 
     const [reg, setReg] = useState(false);
     const router = useRouter();
+    const [values,setValues] = useContext(newContext);
     const [inputs,setInputs] = useState({
         username:"",
         email:"",
@@ -25,6 +26,7 @@ const login = () => {
             password:inputs.password
         }).then((data)=>{
             console.log(data.data.message[0]);
+            setValues({email:inputs.email,isloggedIn:true});
             router.push("/");
         }).catch((e)=>{
             console.log(e);
