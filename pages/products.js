@@ -1,4 +1,4 @@
-import Layout from "@/Components/Layout";
+import Layout from "@/pages/Layout";
 
 const products =()=>{
     return(

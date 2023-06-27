@@ -1,4 +1,4 @@
-import Layout from '@/Components/Layout';
+import Layout from '@/pages/Layout';
 import newContext from '@/Context';
 import { useRouter } from 'next/router';
 import { useContext } from 'react';
