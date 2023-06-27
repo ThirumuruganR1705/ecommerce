@@ -23,9 +23,14 @@ export default async function user(req, res) {
         }else{
             const existingUser = await User.find({email:email});
             if(existingUser.length!=0){
-                return res.status(200).json({message:existingUser});
+                if(existingUser.password==password){
+                    return res.status(200).json({message:existingUser});
+                }else{
+                    return res.status(401).json({message:"Invalid Password"});
+                }
+                
             }else{
-                return res.status(404).json({message:"Not Found"});
+                return res.status(404).json({message:"User Doesn't Exists"});
             }
         }
     } 

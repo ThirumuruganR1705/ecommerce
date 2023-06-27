@@ -3,13 +3,16 @@ import { faHouse, faCartShopping, faTruckFast, faBagShopping, faHeart } from "@f
 import { useContext } from "react";
 import newContext from "@/Context";
 import { useRouter } from "next/router";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Layout = ({ children }) => {
     const [values, setValues] = useContext(newContext);
     const router = useRouter();
+    const notify = () => toast.success("logged out");
     const clickHandler = () => {
         if (values.isloggedIn) {
-            setValues({ email: "", isloggedIn: false });
+            setValues({ email: "", isloggedIn: false });           
         } else {
             router.push("/login");
         }
