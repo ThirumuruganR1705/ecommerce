@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
         }
     }
     return (
-        <div className="flex gap-2 h-screen w-screen relative flex-col md:flex-row justify-between">
+        <div className="flex gap-2 h-[100vh] w-screen relative flex-col md:flex-row justify-between">
             <div className="bg-blue-700 h-full w-[14em] p-3 md:flex flex-col justify-between hidden">
                 <div className="flex flex-col gap-7 items-center w-full">
                     <div className="text-center py-8">
