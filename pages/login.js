@@ -20,7 +20,8 @@ const login = () => {
     console.log(inputs);
 
     const loginRequest=async()=>{
-        const res = await axios.post("http://localhost:3000/api/user",{
+        console.log("starting..");
+        const res = await axios.post("./api/user",{
             username:inputs.username,
             email:inputs.email,
             password:inputs.password
