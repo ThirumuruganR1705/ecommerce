@@ -3,6 +3,7 @@ import { useState } from "react";
 import Layout from "./Layout";
 import Productlist from "./admin/productlist";
 import Newproduct from "./admin/newproduct";
+import Newcategory from "./admin/newcategory";
 
 const admin = () => {
     const router = useRouter();
@@ -28,6 +29,10 @@ const admin = () => {
 
                 {pager == "newproduct" && <div>
                     <Newproduct/>
+                </div>}
+
+                {pager == "newcategory" && <div>
+                    <Newcategory/>
                 </div>}
 
             </div>
