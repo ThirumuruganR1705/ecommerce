@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope, faLock, faUnlockKeyhole, faUser } from "@fortawesome/free-solid-svg-icons";
-import { useContext, useState } from "react";
+import { faEnvelope, faLock, faEye,faEyeSlash, faUser } from "@fortawesome/free-solid-svg-icons";
+import { useContext, useState,useRef } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import axios from 'axios';
@@ -12,6 +12,8 @@ import 'react-toastify/dist/ReactToastify.css';
 const login = () => {
 
     const [reg, setReg] = useState(false);
+    const [show,setShow] = useState(false);
+    const passwordRef = useRef();
     const router = useRouter();
     const [values, setValues] = useContext(newContext);
     const [inputs, setInputs] = useState({
@@ -21,7 +23,15 @@ const login = () => {
     });
     console.log(inputs);
 
-    
+    const viewPassword =() =>{
+        console.log("working..");
+        if(!show){
+            passwordRef.current.type="text";
+        }else if(show){
+            passwordRef.current.type="password";
+        }
+        setShow(!show);
+    }
 
     const loginRequest = async () => {
         const res = await axios.post("./api/user", {
@@ -60,7 +70,6 @@ const login = () => {
                 pauseOnHover
                 theme="light"
             />
-            {/* Same as */}
             <ToastContainer />
             <div className="flex border md:p-16 p-4 gap-3 bg-white rounded-md relative h-auto pb-16">
                 <div className="absolute md:right-0 md:top-0 md:p-3 bottom-0 py-3">
@@ -77,7 +86,7 @@ const login = () => {
                             <div className="h-12 flex items-center">
                                 <FontAwesomeIcon icon={faUser} size="lg" />
                             </div>
-                            <input className="text-lg w-full" type="email" placeholder="Username" value={inputs.username} onChange={(e) => { setInputs((pre) => ({ ...pre, username: e.target.value })) }} />
+                            <input className="text-lg w-full" type="text    " placeholder="Username" value={inputs.username} onChange={(e) => { setInputs((pre) => ({ ...pre, username: e.target.value })) }} />
                         </div>}
                         <div className="md:mr-20 h-12 border flex pl-4 gap-4">
                             <div className="h-12 flex items-center">
@@ -89,7 +98,11 @@ const login = () => {
                             <div className="h-12 flex items-center">
                                 <FontAwesomeIcon icon={faLock} size="lg" />
                             </div>
-                            <input className="text-lg w-full" type="password" placeholder="Password" value={inputs.password} onChange={(e) => { setInputs((pre) => ({ ...pre, password: e.target.value })) }} />
+                            <input ref={passwordRef} className="text-lg w-full" type="password" placeholder="Password" value={inputs.password} onChange={(e) => { setInputs((pre) => ({ ...pre, password: e.target.value })) }} />
+                            <div className="h-12 flex items-center cursor-pointer" onClick={()=>{viewPassword()}}>
+                                {show && <FontAwesomeIcon icon={faEye} size="lg" />}
+                                {!show && <FontAwesomeIcon icon={faEyeSlash} size="lg"/>}
+                            </div>
                         </div>
                         <div className="md:mt-5 flex gap-5">
                             <button className="px-4 py-2 md:px-16 md:py-5 border bg-blue-400 hover:bg-blue-500 text-white rounded-full font-bold" onClick={() => { loginRequest() }}>{!reg ? "LOGIN" : "SIGN IN"}</button>
