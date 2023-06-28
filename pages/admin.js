@@ -4,6 +4,7 @@ import Layout from "./Layout";
 import Productlist from "./admin/productlist";
 import Newproduct from "./admin/newproduct";
 import Newcategory from "./admin/newcategory";
+import CategoryList from "./admin/categories";
 
 const admin = () => {
     const router = useRouter();
@@ -33,6 +34,10 @@ const admin = () => {
 
                 {pager == "newcategory" && <div>
                     <Newcategory/>
+                </div>}
+
+                {pager == "categories" && <div>
+                    <CategoryList/>
                 </div>}
 
             </div>

@@ -9,9 +9,13 @@
 }
 
 input{
-  outline: none;
+  @apply outline-none
 }
 
 *{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+table,th,td,tr{
+  @apply border p-3
 }
