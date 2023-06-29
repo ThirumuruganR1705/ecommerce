@@ -49,7 +49,7 @@ const Newcategory = () => {
                 theme="light"
             />
             <ToastContainer />
-            <div className="border mx-2 flex flex-col gap-3 p-3">
+            <div className="shadow-lg mx-2 flex flex-col gap-3 p-3 rounded-lg">
                 <div className="">
                     <label className="text-sm text-blue-900">Category Name</label>
                     <input placeholder="Category Name" value={inputs.categoryName} className="border focus:border-blue-800 text-blue-900 h-10 w-full" onChange={(e) => { setInputs((pre) => ({ ...pre, categoryName: e.target.value })) }} />
@@ -61,13 +61,13 @@ const Newcategory = () => {
                             <option value="0">Select Parent Category</option>
                             <option value="1">No Parent Category</option>
                             {categories.map((cat) => (
-                                <option value={cat.categoryName}>{cat.categoryName}</option>
+                                <option value={cat.categoryName} key={cat._id}>{cat.categoryName}</option>
                             ))}
                         </select>
                     </div>
                 </div>
                 <div>
-                    <button className="bg-blue-800 text-white px-4 py-2" onClick={() => { clickHandler() }}>Save</button>
+                    <button className="bg-blue-800 text-white px-4 py-2 w-full rounded-md" onClick={() => { clickHandler() }}>Save</button>
                 </div>
             </div>
         </div>
