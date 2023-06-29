@@ -17,5 +17,5 @@ input{
 }
 
 table,th,td,tr{
-  @apply border p-3
+  @apply border p-3 border-collapse
 }

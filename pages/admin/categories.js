@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -15,6 +17,15 @@ const CategoryList = () => {
         fetchCategories();
     }, [])
 
+    const deleteHandler=async(key)=>{
+        console.log(key);
+        const id = key;
+        const res = await axios.delete("../api/category",{
+            key:"283u48829"
+        });
+        console.log(res);
+    }
+
     return (
         <div>
             Categories
@@ -30,7 +41,10 @@ const CategoryList = () => {
                         {categories.map((cat)=>(
                             <tr>
                                 <td>{cat.categoryName}</td>
-                                <td>{cat.parentCategory.categoryName}</td>
+                                <td className="flex justify-between">
+                                    {cat.parentCategory=="1"?"no parent":cat.parentCategory}
+                                    <button value={cat._id} className="text-red-600 border py-2 px-3 rounded-full bg-gray-50 cursor-pointer" onClick={()=>{deleteHandler(cat._id)}}><FontAwesomeIcon icon={faTrash}/></button>
+                                </td>
                             </tr>
                         ))}
                     </tbody>

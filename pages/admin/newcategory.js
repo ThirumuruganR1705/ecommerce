@@ -11,6 +11,8 @@ const Newcategory = () => {
         parentCategory: ""
     });
 
+    console.log(inputs);
+
     const fetchCategories = async () => {
         const res = await axios.get("../api/category");
         setCategories(() => { return res.data.message });
@@ -57,9 +59,9 @@ const Newcategory = () => {
                     <div className="pb-3">
                         <select className="border px-3 py-1 outline-none" value={inputs.parentCategory} onChange={(e) => { setInputs((pre) => ({ ...pre, parentCategory: e.target.value })) }}>
                             <option value="0">Select Parent Category</option>
-                            <option value="">No Parent Category</option>
+                            <option value="1">No Parent Category</option>
                             {categories.map((cat) => (
-                                <option value={cat._id}>{cat.categoryName}</option>
+                                <option value={cat.categoryName}>{cat.categoryName}</option>
                             ))}
                         </select>
                     </div>
