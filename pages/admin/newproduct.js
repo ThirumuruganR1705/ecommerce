@@ -4,7 +4,7 @@ import { faArrowUpFromBracket } from "@fortawesome/free-solid-svg-icons";
 const Newproduct = () => {
     return (
         <div>
-            <div className="border mx-2 flex flex-col gap-3 p-3">
+            <div className="shadow-md rounded-lg mx-2 flex flex-col gap-3 p-3">
                 <div className="">
                     <label className="text-sm text-blue-900">Product Name</label>
                     <input placeholder="Product Name" className="border focus:border-blue-800 text-blue-900 h-10 w-full" />
@@ -25,7 +25,7 @@ const Newproduct = () => {
                     </label>
                 </div>
                 <div>
-                    <button className="bg-blue-800 text-white px-4 py-2">Save</button>
+                    <button className="bg-blue-800 text-white px-4 py-2 w-full rounded-md">Save</button>
                 </div>
             </div>
         </div>
