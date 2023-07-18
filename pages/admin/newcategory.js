@@ -11,7 +11,7 @@ const Newcategory = () => {
         parentCategory: ""
     });
 
-    console.log(inputs);
+    // console.log(inputs);
 
     const fetchCategories = async () => {
         const res = await axios.get("../api/category");

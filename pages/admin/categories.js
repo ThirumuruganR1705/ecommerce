@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -20,10 +21,21 @@ const CategoryList = () => {
     const deleteHandler=async(key)=>{
         console.log(key);
         const id = key;
-        const res = await axios.delete("../api/category",{
-            key:"283u48829"
-        });
+        const res = await axios.post("../api/category?query=del",{
+            key
+        }).catch((e)=>{
+            const notify = () => toast.error("e.response.data.message");
+            notify();
+        }).then(()=>{
+            window.location.reload();
+        })
         console.log(res);
+        // if(res.status==200){
+            
+        // }else{
+        //     const notify = () => toast.error("e.response.data.message");
+        //     notify();
+        // }
     }
 
     return (
@@ -39,7 +51,7 @@ const CategoryList = () => {
                     </thead>
                     <tbody>
                         {categories.map((cat)=>(
-                            <tr>
+                            <tr key={cat._id}>
                                 <td>{cat.categoryName}</td>
                                 <td className="flex justify-between">
                                     {cat.parentCategory=="1"?"no parent":cat.parentCategory}
