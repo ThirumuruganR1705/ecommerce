@@ -57,7 +57,7 @@ const login = () => {
 
     return (
 
-        <div className="md:p-8 px-2 border h-screen w-screen bg-blue-300 flex justify-center items-center">
+        <div className="md:p-8 px-2 border h-screen w-screen bg-orange-300 flex justify-center items-center">
             <ToastContainer
                 position="top-right"
                 autoClose={5000}
@@ -73,7 +73,7 @@ const login = () => {
             <ToastContainer />
             <div className="flex border md:p-16 p-4 gap-3 bg-white rounded-md relative h-auto pb-16">
                 <div className="absolute md:right-0 md:top-0 md:p-3 bottom-0 py-3">
-                    <p className="">{!reg ? "New User? " : "Existing User? "}<span className="text-blue-400 cursor-pointer" onClick={() => { setReg(!reg) }}>{!reg ? "Sign Up" : "Sign In"}</span></p>
+                    <p className="">{!reg ? "New User? " : "Existing User? "}<span className="text-orange-400 cursor-pointer" onClick={() => { setReg(!reg) }}>{!reg ? "Sign Up" : "Sign In"}</span></p>
                 </div>
                 <div className="w-1/2 h-full hidden md:block">
                     <img src="https://brandesignhub.com/images/quote_banner.png" className="w-full" />
@@ -105,7 +105,7 @@ const login = () => {
                             </div>
                         </div>
                         <div className="md:mt-5 flex gap-5">
-                            <button className="px-4 py-2 md:px-16 md:py-5 border bg-blue-400 hover:bg-blue-500 text-white rounded-full font-bold" onClick={() => { loginRequest() }}>{!reg ? "LOGIN" : "SIGN IN"}</button>
+                            <button className="px-4 py-2 md:px-16 md:py-5 border bg-orange-400 hover:bg-orange-500 text-white rounded-full font-bold" onClick={() => { loginRequest() }}>{!reg ? "LOGIN" : "SIGN IN"}</button>
                             {!reg && <a className="flex items-center text-xs md:text-sm text-gray-500 cursor-pointer">FORGET PASSWORD?</a>}
                         </div>
                         <div className="flex gap-12 md:mt-4">
