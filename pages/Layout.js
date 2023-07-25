@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDown, faMagnifyingGlass, faUser, faCartShopping, faRightToBracket, faList, faBars } from "@fortawesome/free-solid-svg-icons";
-import { useContext, useRef } from "react";
+import { faAngleDown, faMagnifyingGlass, faUser, faCartShopping, faRightToBracket, faList, faBars, faX } from "@fortawesome/free-solid-svg-icons";
+import { useContext, useRef, useState } from "react";
 import newContext from "@/Context";
 import { useRouter } from "next/router";
 import { ToastContainer, toast } from 'react-toastify';
@@ -11,6 +11,7 @@ const Layout = ({ children }) => {
     const router = useRouter();
     const accref = useRef();
     const menuViewer = useRef();
+    const [xmark,setXmark] = useState(false);
     const notify = () => toast.success("logged out");
     const clickHandler = () => {
         if (values.isloggedIn) {
@@ -25,16 +26,19 @@ const Layout = ({ children }) => {
         if (accref.current.className == "hidden") {
             accref.current.className = "absolute top-16 bg-orange-400 w-28 text-center text-white";
         } else {
-            accref.current.className = "hidden"
+            accref.current.className = "hidden";
         }
     }
 
     const menuActions = () => {
         if (menuViewer.current.className == "hidden") {
-            menuViewer.current.className = "absolute top-12 left-0 w-full bg-orange-400";
+            menuViewer.current.className = "absolute top-12 left-0 w-full bg-orange-600 text-center";
+            setXmark(true);
         } else {
-            menuViewer.current.className = "hidden"
+            menuViewer.current.className = "hidden";
+            setXmark(false);
         }
+        console.log(menuViewer.current.className);
     }
 
     const logoutHandler = () => {
@@ -132,30 +136,33 @@ const Layout = ({ children }) => {
                 </div>
 
             </div>
-            <div className="md:hidden flex justify-between h-12 bg-orange-400 items-center text-white px-2 relative">
+            <div className="md:hidden flex justify-between h-12 bg-orange-600 items-center text-white px-2 relative">
                 <div className="font-bold text-lg">
                     <h2>Shopkart</h2>
                 </div>
                 {values.isloggedIn && <div onClick={() => { menuActions() }}>
-                    <p><FontAwesomeIcon icon={faBars} /></p>
+                    <div>
+                        {!xmark &&<p><FontAwesomeIcon icon={faBars} /></p>}
+                        {xmark &&<p><FontAwesomeIcon icon={faX} /></p>}
+                    </div>
                 </div>}
                 <div className="hidden" ref={menuViewer} >
                     <div className="py-2 pl-2">
-                        <p>Home</p>
+                        <p className={router.pathname=="/"?"text-orange-200":""}>Home</p>
                     </div>
                     <div className="py-2 pl-2">
-                        <p>categories</p>
+                        <p className={router.pathname=="/categories"?"text-orange-200":""}>categories</p>
                     </div>
                     <div className="py-2 pl-2">
-                        <p>What's New</p>
+                        <p className={router.pathname=="/new"?"text-orange-200":""}>What's New</p>
                     </div>
                     <div className="py-2 pl-2">
-                        <p>Liked</p>
+                        <p className={router.pathname=="/liked"?"text-orange-200":""}>Liked</p>
                     </div>
                     <div className="py-2 pl-2">
-                        <p>Cart</p>
+                        <p className={router.pathname=="/cart"?"text-orange-200":""}>Cart</p>
                     </div>
-                    <div className="py-2 pl-2">
+                    <div className="py-2 pl-2 flex justify-center">
                         <div className="bg-gray-100 w-64 h-10 flex items-center justify-between rounded-full pl-2">
                             <input className="bg-gray-100 text-orange-400" placeholder="Search Product" />
                             <p className=" text-orange-500 bg-gray-200 h-10 flex items-center w-10 justify-center rounded-full cursor-pointer"><FontAwesomeIcon icon={faMagnifyingGlass} /></p>
@@ -164,13 +171,16 @@ const Layout = ({ children }) => {
                     <div className="py-2 pl-2">
                         <p>Account</p>
                     </div>
-                    {values.email="thiru@gmail.com"&&<div className="py-2 pl-2">
-                        <p>Admin Dashboard</p>
+                    {values.email = "thiru@gmail.com" && <div className="py-2 pl-2">
+                        <p className={router.pathname=="/admin"?"text-orange-200":""} onClick={()=>{router.push("./admin")}}>Admin Dashboard</p>
                     </div>}
                 </div>
                 {!values.isloggedIn && <div>
-                    <p className="border border-white py-1 px-3 rounded-md" onClick={()=>{router.push("./login")}}>Login</p>
+                    <p className="border border-white py-1 px-3 rounded-md" onClick={() => { router.push("./login") }}>Login</p>
                 </div>}
+            </div>
+            <div>
+                {children}
             </div>
         </div>
 

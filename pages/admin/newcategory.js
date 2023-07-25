@@ -51,11 +51,11 @@ const Newcategory = () => {
             <ToastContainer />
             <div className="shadow-lg mx-2 flex flex-col gap-3 p-3 rounded-lg">
                 <div className="">
-                    <label className="text-sm text-blue-900">Category Name</label>
-                    <input placeholder="Category Name" value={inputs.categoryName} className="border focus:border-blue-800 text-blue-900 h-10 w-full" onChange={(e) => { setInputs((pre) => ({ ...pre, categoryName: e.target.value })) }} />
+                    <label className="text-sm text-orange-600">Category Name</label>
+                    <input placeholder="Category Name" value={inputs.categoryName} className="border focus:border-blue-800 text-orange-600 h-10 w-full" onChange={(e) => { setInputs((pre) => ({ ...pre, categoryName: e.target.value })) }} />
                 </div>
                 <div className="felx flex-col">
-                    <label className="text-sm text-blue-900">Parent Category</label>
+                    <label className="text-sm text-orange-600">Parent Category</label>
                     <div className="pb-3">
                         <select className="border px-3 py-1 outline-none" value={inputs.parentCategory} onChange={(e) => { setInputs((pre) => ({ ...pre, parentCategory: e.target.value })) }}>
                             <option value="0">Select Parent Category</option>
@@ -67,7 +67,7 @@ const Newcategory = () => {
                     </div>
                 </div>
                 <div>
-                    <button className="bg-blue-800 text-white px-4 py-2 w-full rounded-md" onClick={() => { clickHandler() }}>Save</button>
+                    <button className="bg-orange-600 text-white px-4 py-2 w-full rounded-md" onClick={() => { clickHandler() }}>Save</button>
                 </div>
             </div>
         </div>

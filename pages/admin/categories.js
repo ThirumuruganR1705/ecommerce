@@ -43,7 +43,7 @@ const CategoryList = () => {
             Categories
             <div className="pt-3 md:mr-2">
                 <table className="w-full shadow-md ">
-                    <thead className="border bg-blue-800 text-white">
+                    <thead className="border bg-orange-600 text-white">
                         <tr className="border">
                             <th>Category Name</th>
                             <th>Parent Category</th>
