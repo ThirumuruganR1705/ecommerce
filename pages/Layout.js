@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
     const router = useRouter();
     const accref = useRef();
     const menuViewer = useRef();
-    const [xmark,setXmark] = useState(false);
+    const [xmark, setXmark] = useState(false);
     const notify = () => toast.success("logged out");
     const clickHandler = () => {
         if (values.isloggedIn) {
@@ -32,7 +32,7 @@ const Layout = ({ children }) => {
 
     const menuActions = () => {
         if (menuViewer.current.className == "hidden") {
-            menuViewer.current.className = "absolute top-12 left-0 w-full bg-orange-600 text-center";
+            menuViewer.current.className = "absolute top-0 left-0 bg-orange-600 text-center w-3/4 h-screen py-12";
             setXmark(true);
         } else {
             menuViewer.current.className = "hidden";
@@ -136,31 +136,42 @@ const Layout = ({ children }) => {
                 </div>
 
             </div>
-            <div className="md:hidden flex justify-between h-12 bg-orange-600 items-center text-white px-2 relative">
-                <div className="font-bold text-lg">
-                    <h2>Shopkart</h2>
+            <div className="md:hidden text-white">
+                <div className="md:hidden flex justify-between h-12 bg-orange-600 items-center text-white px-2 relative">
+                    {values.isloggedIn && <div onClick={() => { menuActions() }}>
+                        <div>
+                            {!xmark && <p><FontAwesomeIcon icon={faBars} /></p>}
+                            {xmark && <p><FontAwesomeIcon icon={faX} /></p>}
+                        </div>
+                    </div>}
+                    <div className="font-bold text-lg">
+                        <h2>Shopkart</h2>
+                    </div>
+                    {values.isloggedIn && <div className="flex text-orange-600 bg-white py-1 px-2 rounded-full">
+                        <p><FontAwesomeIcon icon={faUser} /></p>
+                    </div>}
                 </div>
-                {values.isloggedIn && <div onClick={() => { menuActions() }}>
-                    <div>
-                        {!xmark &&<p><FontAwesomeIcon icon={faBars} /></p>}
-                        {xmark &&<p><FontAwesomeIcon icon={faX} /></p>}
-                    </div>
-                </div>}
+
                 <div className="hidden" ref={menuViewer} >
-                    <div className="py-2 pl-2">
-                        <p className={router.pathname=="/"?"text-orange-200":""}>Home</p>
+                    {values.isloggedIn && <div onClick={() => { menuActions() }}>
+                        <div className="absolute top-3 left-4">
+                            <p><FontAwesomeIcon icon={faX} /></p>
+                        </div>
+                    </div>}
+                    <div className={router.pathname=="/"?"py-2 pl-2 bg-white text-orange-600":"py-2 pl-2 "}>
+                        <p onClick={() => { router.push("./") }}>Home</p>
                     </div>
-                    <div className="py-2 pl-2">
-                        <p className={router.pathname=="/categories"?"text-orange-200":""}>categories</p>
+                    <div className={router.pathname=="/categories"?"py-2 pl-2 bg-white text-orange-600":"py-2 pl-2 "}>
+                        <p>categories</p>
                     </div>
-                    <div className="py-2 pl-2">
-                        <p className={router.pathname=="/new"?"text-orange-200":""}>What's New</p>
+                    <div className={router.pathname=="/new"?"py-2 pl-2 bg-white text-orange-600":"py-2 pl-2 "}>
+                        <p>What's New</p>
                     </div>
-                    <div className="py-2 pl-2">
-                        <p className={router.pathname=="/liked"?"text-orange-200":""}>Liked</p>
+                    <div className={router.pathname=="/liked"?"py-2 pl-2 bg-white text-orange-600":"py-2 pl-2 "}>
+                        <p>Liked</p>
                     </div>
-                    <div className="py-2 pl-2">
-                        <p className={router.pathname=="/cart"?"text-orange-200":""}>Cart</p>
+                    <div className={router.pathname=="/cart"?"py-2 pl-2 bg-white text-orange-600":"py-2 pl-2 "}>
+                        <p>Cart</p>
                     </div>
                     <div className="py-2 pl-2 flex justify-center">
                         <div className="bg-gray-100 w-64 h-10 flex items-center justify-between rounded-full pl-2">
@@ -168,16 +179,17 @@ const Layout = ({ children }) => {
                             <p className=" text-orange-500 bg-gray-200 h-10 flex items-center w-10 justify-center rounded-full cursor-pointer"><FontAwesomeIcon icon={faMagnifyingGlass} /></p>
                         </div>
                     </div>
-                    <div className="py-2 pl-2">
+                    <div className={router.pathname=="/account"?"py-2 pl-2 bg-white text-orange-600":"py-2 pl-2 "}>
                         <p>Account</p>
                     </div>
-                    {values.email = "thiru@gmail.com" && <div className="py-2 pl-2">
-                        <p className={router.pathname=="/admin"?"text-orange-200":""} onClick={()=>{router.push("./admin")}}>Admin Dashboard</p>
+                    {values.email = "thiru@gmail.com" && <div className={router.pathname=="/admin"?"py-2 pl-2 bg-white text-orange-600":"py-2 pl-2 "}>
+                        <p onClick={() => { router.push("./admin") }}>Admin Dashboard</p>
                     </div>}
                 </div>
                 {!values.isloggedIn && <div>
                     <p className="border border-white py-1 px-3 rounded-md" onClick={() => { router.push("./login") }}>Login</p>
                 </div>}
+                
             </div>
             <div>
                 {children}
