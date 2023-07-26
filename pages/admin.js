@@ -17,10 +17,10 @@ const admin = () => {
                     <h2 className="text-lg font-bold">Admin Dashboard</h2>
                 </div>
                 <div className="flex my-4  w-fit">
-                    <p className={"cursor-pointer "+(pager == "list" ? "bg-orange-600 text-white md:px-4 md:py-2 text-xs md:text-base px-2 py-1 rounded-xl ml-1" : "bg-orange-300 md:px-4 md:py-2 text-xs md:text-base px-2 py-1 rounded-xl ml-1")} onClick={() => { setPager("list") }}>Product List</p>
-                    <p className={"cursor-pointer "+(pager == "newproduct" ? "bg-orange-600 text-white md:px-4 md:py-2 text-xs md:text-base px-2 py-1 rounded-xl ml-1" : "bg-orange-300 md:px-4 md:py-2 text-xs md:text-base px-2 py-1 rounded-xl ml-1")} onClick={() => { setPager("newproduct") }}>Add new Product</p>
-                    <p className={"cursor-pointer "+(pager == "categories" ? "bg-orange-600 text-white md:px-4 md:py-2 text-xs md:text-base px-2 py-1 rounded-xl ml-1" : "bg-orange-300 md:px-4 md:py-2 text-xs md:text-base px-2 py-1 rounded-xl ml-1")} onClick={() => { setPager("categories") }}>Categories list</p>
-                    <p className={"cursor-pointer "+(pager == "newcategory" ? "bg-orange-600 text-white md:px-4 md:py-2 text-xs md:text-base px-2 py-1 rounded-xl ml-1" : "bg-orange-300 md:px-4 md:py-2 text-xs md:text-base px-2 py-1 rounded-xl ml-1")} onClick={() => { setPager("newcategory") }}>Add New Category</p>
+                    <p className={"cursor-pointer "+(pager == "list" ? "bg-orange-600 text-white md:px-4 md:py-2 text-xs md:text-base px-2 py-1 rounded-xl ml-1" : "bg-orange-300 text-white md:px-4 md:py-2 text-xs md:text-base px-2 py-1 rounded-xl ml-1")} onClick={() => { setPager("list") }}>Product List</p>
+                    <p className={"cursor-pointer "+(pager == "newproduct" ? "bg-orange-600 text-white md:px-4 md:py-2 text-xs md:text-base px-2 py-1 rounded-xl ml-1" : "bg-orange-300 text-white md:px-4 md:py-2 text-xs md:text-base px-2 py-1 rounded-xl ml-1")} onClick={() => { setPager("newproduct") }}>Add new Product</p>
+                    <p className={"cursor-pointer "+(pager == "categories" ? "bg-orange-600 text-white md:px-4 md:py-2 text-xs md:text-base px-2 py-1 rounded-xl ml-1" : "bg-orange-300 text-white md:px-4 md:py-2 text-xs md:text-base px-2 py-1 rounded-xl ml-1")} onClick={() => { setPager("categories") }}>Categories list</p>
+                    <p className={"cursor-pointer "+(pager == "newcategory" ? "bg-orange-600 text-white md:px-4 md:py-2 text-xs md:text-base px-2 py-1 rounded-xl ml-1" : "bg-orange-300 text-white md:px-4 md:py-2 text-xs md:text-base px-2 py-1 rounded-xl ml-1")} onClick={() => { setPager("newcategory") }}>Add New Category</p>
                 </div>
             </div>
             <div>
