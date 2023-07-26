@@ -5,6 +5,9 @@ import { useEffect, useState, useRef } from "react";
 import storage from "@/lib/firebase";
 import { getDownloadURL, listAll, ref, uploadBytesResumable } from "firebase/storage";
 import { data } from "autoprefixer";
+import { images } from "@/next.config";
+import { ToastContainer,toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Newproduct = () => {
@@ -17,10 +20,9 @@ const Newproduct = () => {
         category: "",
         description: "",
         price: "",
-        Images: [],
-        features: ""
+        images: []
     });
-    console.log(file);
+    console.log(inputs);
     console.log(imgurl);
 
     const fetchCategories = async () => {
@@ -61,20 +63,34 @@ const Newproduct = () => {
             () => {
                 getDownloadURL(uploadTask.snapshot.ref).then((url) => {
                     console.log(url);
-                    setImgurl(data=>[...data,url])
+                    setImgurl(data => [...data, url]);
+                    setInputs((pre) => ({ ...pre, images: [...inputs.images, url] }));
                 })
             }
         )
-        listAll(ref(storage, "images")).then(data => { console.log(data); })
+        // listAll(ref(storage, "images")).then(data => { console.log(data); })
+
     }
 
     useEffect(() => {
         fetchCategories();
     }, [])
 
-    const uploadHandler =async()=>{
-        const res = await axios.post("../api/product",{inputs});
+    const uploadHandler = async () => {
+        const res = await axios.post("../api/product", {
+            productName: inputs.productName,
+            category: inputs.category,
+            description: inputs.description,
+            price: inputs.price,
+            Images: inputs.images,
+        });
+        if(res.status==200){
+            const notify = () => toast.success("Created");
+            notify();
+        }
     }
+
+
 
     return (
         <div>
@@ -110,7 +126,7 @@ const Newproduct = () => {
                     </label>
                 </div>
                 <div>
-                    <button className="bg-orange-600 text-white px-4 py-2 w-full rounded-md" onClick={()=>{uploadHandler}}>Save</button>
+                    <button className="bg-orange-600 text-white px-4 py-2 w-full rounded-md" onClick={() => { uploadHandler() }}>Save</button>
                 </div>
             </div>
         </div>

@@ -30,8 +30,8 @@ const Layout = ({ children }) => {
         }
     }
 
-    const menuActions = () => {
-        if (menuViewer.current.className == "hidden") {
+    const menuActions = (e) => {
+        if (menuViewer.current.className == "hidden" && e!="screen") {
             menuViewer.current.className = "absolute top-0 left-0 bg-orange-600 text-center w-3/4 h-screen py-12";
             setXmark(true);
         } else {
@@ -136,9 +136,9 @@ const Layout = ({ children }) => {
                 </div>
 
             </div>
-            <div className="md:hidden text-white">
+            <div className="md:hidden text-white" >
                 <div className="md:hidden flex justify-between h-12 bg-orange-600 items-center text-white px-2 relative">
-                    {values.isloggedIn && <div onClick={() => { menuActions() }}>
+                    {values.isloggedIn && <div onClick={() => { menuActions("f") }}>
                         <div>
                             {!xmark && <p><FontAwesomeIcon icon={faBars} /></p>}
                             {xmark && <p><FontAwesomeIcon icon={faX} /></p>}
@@ -197,7 +197,7 @@ const Layout = ({ children }) => {
                 </div>}
                 
             </div>
-            <div>
+            <div onClick={()=>{menuActions("screen")}}>
                 {children}
             </div>
         </div>
