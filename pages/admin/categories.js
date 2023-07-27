@@ -53,7 +53,7 @@ const CategoryList = () => {
                         {categories.map((cat)=>(
                             <tr key={cat._id}>
                                 <td>{cat.categoryName}</td>
-                                <td className="flex justify-between">
+                                <td className="flex justify-between border-none">
                                     {cat.parentCategory=="1"?"no parent":cat.parentCategory}
                                     <button value={cat._id} className="text-red-600 border py-2 px-3 rounded-full bg-gray-50 cursor-pointer" onClick={()=>{deleteHandler(cat._id)}}><FontAwesomeIcon icon={faTrash}/></button>
                                 </td>

@@ -6,7 +6,7 @@ import storage from "@/lib/firebase";
 import { getDownloadURL, listAll, ref, uploadBytesResumable } from "firebase/storage";
 import { data } from "autoprefixer";
 import { images } from "@/next.config";
-import { ToastContainer,toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -84,7 +84,7 @@ const Newproduct = () => {
             price: inputs.price,
             Images: inputs.images,
         });
-        if(res.status==200){
+        if (res.status == 200) {
             const notify = () => toast.success("Created");
             notify();
         }
@@ -111,7 +111,10 @@ const Newproduct = () => {
                     </div>
                 </div>
                 <div className="">
-                    <label className="text-sm text-orange-600">Description</label>
+                    <div className="flex gap-2 items-center">
+                        <label className="text-sm text-orange-600">Description</label>
+                        <p className="text-xs">( Use "," to separate the feature )</p>
+                    </div>
                     <textarea placeholder="Description" className="border focus:border-orange-600 text-orange-600 h-20 w-full outline-none" onChange={(e) => { setInputs((pre) => ({ ...pre, description: e.target.value })) }} />
                 </div>
                 <div className="">

@@ -137,7 +137,7 @@ const Layout = ({ children }) => {
 
             </div>
             <div className="md:hidden text-white" >
-                <div className="md:hidden flex justify-between h-12 bg-orange-600 items-center text-white px-2 relative">
+                <div className="md:hidden flex justify-between h-12 bg-orange-600 items-center px-2 text-white  relative">
                     {values.isloggedIn && <div onClick={() => { menuActions("f") }}>
                         <div>
                             {!xmark && <p><FontAwesomeIcon icon={faBars} /></p>}
@@ -197,7 +197,7 @@ const Layout = ({ children }) => {
                 </div>}
                 
             </div>
-            <div onClick={()=>{menuActions("screen")}}>
+            <div onClick={()=>{menuActions("screen")}} className="">
                 {children}
             </div>
         </div>

@@ -23,7 +23,7 @@ const admin = () => {
                     <p className={"cursor-pointer "+(pager == "newcategory" ? "bg-orange-600 text-white md:px-4 md:py-2 text-xs md:text-base px-2 py-1 rounded-xl ml-1" : "bg-orange-300 text-white md:px-4 md:py-2 text-xs md:text-base px-2 py-1 rounded-xl ml-1")} onClick={() => { setPager("newcategory") }}>Add New Category</p>
                 </div>
             </div>
-            <div>
+            <div className="p-2">
                 {pager == "list" && <div>
                     <Productlist />
                 </div>}
