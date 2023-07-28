@@ -13,8 +13,14 @@ const Productlist = () => {
         setProducts(res.data.message);
     }
 
+    const fetchProductbyId = async(id) =>{
+        const res = await axios.post("../api/product?type=get",{id:id});
+        console.log(res);
+    }
+
     useEffect(() => {
         fetchProducts();
+        fetchProductbyId("64c2250c9987c58423680c21");
     }, [])
 
     return (

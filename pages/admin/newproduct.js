@@ -8,6 +8,7 @@ import { data } from "autoprefixer";
 import { images } from "@/next.config";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import Image from "next/image";
 
 
 const Newproduct = () => {
@@ -41,12 +42,15 @@ const Newproduct = () => {
             (snapshot) => {
                 const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                 console.log('Upload is ' + progress + '% done');
+
                 switch (snapshot.state) {
                     case 'paused':
                         console.log('Upload is paused');
                         break;
                     case 'running':
                         console.log('Upload is running');
+                        const notify = () => toast.success('Uploading');
+                        notify();
                         break;
                 }
             },
@@ -65,9 +69,14 @@ const Newproduct = () => {
                     console.log(url);
                     setImgurl(data => [...data, url]);
                     setInputs((pre) => ({ ...pre, images: [...inputs.images, url] }));
+                    const notify = () => toast.success('Uploaded');
+                    notify();
                 })
             }
         )
+
+
+
         // listAll(ref(storage, "images")).then(data => { console.log(data); })
 
     }
@@ -122,11 +131,21 @@ const Newproduct = () => {
                     <input placeholder="Price" type="number" className="border focus:border-orange-600 text-orange-600 h-10 w-full" onChange={(e) => { setInputs((pre) => ({ ...pre, price: e.target.value })) }} />
                 </div>
                 <div>
-                    <label>
-                        <p className="text-sm text-orange-600 pb-3">Images</p>
-                        <input type="file" className="hidden" onChange={(e) => { imageUpload(e) }} />
-                        <span><FontAwesomeIcon icon={faArrowUpFromBracket} className="h-12 text-gray-400 border p-5 rounded-md" /></span>
-                    </label>
+                    <p className="text-sm text-orange-600 pb-3">Images</p>
+                    <div className="grid grid-cols-3 md:flex">
+                        {inputs.images.map((data) => (
+                            <Image src={data} width={500} height={500} className="h-20 w-24" />
+                        ))}
+                        <label>
+                            <div>
+                                <input type="file" className="hidden" onChange={(e) => { imageUpload(e) }} />
+                                <span><FontAwesomeIcon icon={faArrowUpFromBracket} className="h-12 text-gray-400 border p-5 rounded-md" /></span>
+                            </div>
+                        </label>
+                    </div>
+                    <div className="grid grid-cols-3 md:flex">
+
+                    </div>
                 </div>
                 <div>
                     <button className="bg-orange-600 text-white px-4 py-2 w-full rounded-md" onClick={() => { uploadHandler() }}>Save</button>

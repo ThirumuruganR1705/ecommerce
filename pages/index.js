@@ -8,6 +8,7 @@ import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import axios from 'axios';
 import { useRef } from 'react';
+import Productcomponent from './Components/productcomponents';
 
 export default function Home() {
 
@@ -40,30 +41,7 @@ export default function Home() {
   return (
     <Layout>
       <div>
-        {/* <Swiper
-          effect={"coverflow"}
-          grabCursor={true}
-          centeredSlides={true}
-          slidesPerView={"auto"}
-          coverflowEffect={{
-            rotate: 50,
-            stretch: 0,
-            depth: 1,
-            modifier: 1,
-            slideShadows: true,
-          }}
-          pagination={true}
-          className="mySwiper"
-        >
-          {categories.map((cat) => (
-            <SwiperSlide>
-              <div className='border h-20 mx-3 w-30'>
-                <p>{cat.categoryName}</p>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper> */}
-        <button onClick={() => { clickHandler() }}>{values.isloggedIn ? "Logout" : "Login"}</button>
+        <Productcomponent/>
       </div>
     </Layout>
   )

@@ -85,7 +85,7 @@ const Layout = ({ children }) => {
         // </div>
 
         <div className="lg:mx-12  h-screen">
-            <div className="md:flex justify-between h-16 items-center  px-4 hidden bg-white relative">
+            <div className="md:flex justify-between h-16 items-center hidden bg-white relative">
                 <div className="p">
                     <h2 className="font-bold text-xl text-orange-400 cursor-pointer">Shopkart</h2>
                 </div>
