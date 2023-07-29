@@ -1,8 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import { faArrowRightLong, faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import { useRouter } from "next/router";
 
 function Productcard(props) {
+
+    const router = useRouter();
+
     return (
         <div className="md:h-72 md:w-64 h-44 w-full p-2 shadow-lg rounded-lg">
             <div className="h-28 md:h-48 rounded-md">
@@ -15,7 +19,7 @@ function Productcard(props) {
                 </div>
                 <div className="md:py-2" >
                     <button className="text-xs md:text-base border border-orange-600 px-2 py-1 rounded-md text-orange-600 hover:text-white hover:bg-orange-600">Add to cart</button>
-                    <button className="text-xs md:text-base rounded-md bg-orange-600 text-white py-1 px-2 float-right">
+                    <button className="text-xs md:text-base rounded-md bg-orange-600 text-white py-1 px-2 float-right" onClick={()=>{router.push("../products/"+props.id)}}>
                         View
                     </button>
                 </div>

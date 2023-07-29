@@ -4,8 +4,9 @@ const product = async (req, res) => {
     await connectMongo();
     if (req.method == "POST") {
         if (req.query.type == "get") {
-            const id = req.query.id;
-            console.log(req.body.id);
+            const id = req.body.id;
+            const result = await Products.findOne({_id:id});
+            return res.status(200).json({message:result});
         } else {
             const { productName, category, description, price, Images } = req.body;
             const result = await Products.create({
@@ -24,8 +25,6 @@ const product = async (req, res) => {
     }
 
     else if (req.method === "GET") {
-        console.log("running");
-        console.log(req.query.type);
         const result = await Products.find();
         res.status(200).json({ message: result });
     }
