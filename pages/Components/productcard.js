@@ -8,11 +8,11 @@ function Productcard(props) {
     const router = useRouter();
 
     return (
-        <div className="md:h-72 md:w-64 h-44 w-full p-2 shadow-lg rounded-lg">
-            <div className="h-28 md:h-48 rounded-md">
+        <div className="md:h-72 md:w-64 h-52 w-full p-2 shadow-lg rounded-lg">
+            <div className="h-32 md:h-48 rounded-md">
                 <Image src={props.image} className="rounded-md w-full md:h-48 h-28" width={500} height={500} alt={props.productName} />
             </div>
-            <div className="h-12">
+            <div className="h-16">
                 <div  className="flex text-xs md:text-lg justify-between font-bold py-1 md:py-1">
                     <h3 className="text-center">{props.productName}</h3>
                     <h4>${props.price}</h4>
