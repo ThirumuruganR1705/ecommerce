@@ -36,7 +36,7 @@ function Productviewer() {
     return (
         <Layout>
             <div className="px-2 md:flex md:justify-between  md:py-10">
-                <div className="flex justify-center w-1/2">
+                <div className="flex justify-center md:w-1/2">
                     <div className="flex justify-center gap-2 md:w-auto">
                         <div className={index == 0 ? "invisible" : "flex items-center"}>
                             <FontAwesomeIcon icon={faChevronLeft} className="h-6 border py-1 rounded-full px-2 text-orange-600 cursor-pointer" onClick={() => { setIndex(index - 1) }} />
