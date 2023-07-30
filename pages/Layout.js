@@ -17,12 +17,16 @@ const Layout = ({ children }) => {
         if (values.isloggedIn) {
             setValues({ email: "", isloggedIn: false });
         } else {
-            router.push("/login");
+            if(router.pathname=="/products"){
+                router.push("../login");
+            }else{
+                router.push("/login");
+            }
+            
         }
     }
 
     const accountMenu = () => {
-        console.log(accref.current.className);
         if (accref.current.className == "hidden") {
             accref.current.className = "absolute top-16 bg-orange-400 w-28 text-center text-white";
         } else {
@@ -32,13 +36,12 @@ const Layout = ({ children }) => {
 
     const menuActions = (e) => {
         if (menuViewer.current.className == "hidden" && e!="screen") {
-            menuViewer.current.className = "absolute top-0 left-0 bg-orange-600 text-center w-3/4 h-screen py-12";
+            menuViewer.current.className = "absolute top-0 left-0 bg-orange-600 text-center w-3/4 h-screen py-12 z-10";
             setXmark(true);
         } else {
             menuViewer.current.className = "hidden";
             setXmark(false);
         }
-        console.log(menuViewer.current.className);
     }
 
     const logoutHandler = () => {

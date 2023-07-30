@@ -18,7 +18,6 @@ function Productviewer() {
         Images:[]
     });
     const features = product.description.split(",");
-    console.log(features);
 
     const fetchProduct = async () => {
         const res = await axios.post("../api/product?type=get", {
@@ -26,7 +25,6 @@ function Productviewer() {
         }).then((d)=>{
             setMaxIndex(()=>{return d.data.message.Images.length});
             setProduct(()=>{return d.data.message});
-            console.log(d.data.message);
         });        
     }
 

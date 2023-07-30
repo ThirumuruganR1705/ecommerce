@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
-import { faArrowRightLong, faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightLong, faArrowUpRightFromSquare,faIndianRupeeSign } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 
@@ -19,7 +19,7 @@ function Productcard(props) {
             <div className="h-16">
                 <div  className="flex text-xs md:text-lg justify-between font-bold py-1 md:py-1">
                     <h3 className="text-center">{props.productName}</h3>
-                    <h4>${props.price}</h4>
+                    <h4><FontAwesomeIcon icon={faIndianRupeeSign} className="text-xs md:text-lg"/>{props.price}</h4>
                 </div>
                 <div className="md:py-2" >
                     <button className="text-xs md:text-base border border-orange-600 px-2 py-1 rounded-md text-orange-600 hover:text-white hover:bg-orange-600">Add to cart</button>
