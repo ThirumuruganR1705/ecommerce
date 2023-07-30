@@ -29,7 +29,7 @@ const Productlist = () => {
             <div className="mx-2 md:">
                 <table className="w-full border-none">
                     <thead>
-                        <tr className="bg-orange-400">
+                        <tr className="bg-orange-400 text-white font-semibold">
                             <td>Product Name</td>
                             <td>Category</td>
                             <td>Price</td>

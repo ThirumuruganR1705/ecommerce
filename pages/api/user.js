@@ -15,7 +15,10 @@ export default async function user(req, res) {
                 const user = await User.create({
                     username: username,
                     email: email,
-                    password: password
+                    password: password,
+                    liked:[],
+                    purchased:[],
+                    cart:[]
                 });
                 console.log("created");
                 return res.status(201).json({ message: "created" });

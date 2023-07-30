@@ -10,7 +10,7 @@ function Productcard(props) {
 
     return (
         <div className="md:h-72 md:w-64 h-56 w-full p-2 shadow-lg rounded-lg relative">
-            <div className="absolute bg-white right-6 px-2 rounded-full py-1 cursor-pointer text-orange-600">
+            <div className="absolute bg-white right-6 top-3 px-2 rounded-full py-1 cursor-pointer text-orange-600">
                 <FontAwesomeIcon icon={faHeart}/>
             </div>
             <div className="h-36 md:h-48 rounded-md">
