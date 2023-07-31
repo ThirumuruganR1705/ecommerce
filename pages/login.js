@@ -34,7 +34,7 @@ const login = () => {
     }
 
     const loginRequest = async () => {
-        const res = await axios.post("./api/user", {
+        const res = await axios.post("./api/user?type=login", {
             username: inputs.username,
             email: inputs.email,
             password: inputs.password

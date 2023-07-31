@@ -1,17 +1,63 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
-import { faArrowRightLong, faArrowUpRightFromSquare,faIndianRupeeSign } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightLong, faArrowUpRightFromSquare,faIndianRupeeSign,faHeartCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import { useContext, useEffect, useState } from "react";
+import newContext from "@/Context";
+import axios from "axios";
 
 function Productcard(props) {
 
+    const [values,setValues] = useContext(newContext);
+    const [isLiked,setIsLiked] = useState(false);
+
     const router = useRouter();
+
+    const fetchUser=async()=>{
+        const res = await axios.post("../api/user?type=get",{email:values.email});
+        for (var i=0;i<res.data.message.liked.length;i++){
+            if(res.data.message.liked[i]==props.id){
+                setIsLiked(true);
+            }
+        }
+    }
+
+    useEffect(()=>{
+        if(values.isloggedIn){
+            fetchUser();
+        }
+    },[])
+
+    const likeHandler =async()=>{
+        if(!values.isloggedIn){
+            router.push("../login");
+        }else if(!isLiked){
+            const res = await axios.put("../api/user?type=add",{
+                email:values.email,
+                productId:props.id
+            });
+            if(res.status==200){
+                setIsLiked(true);
+            }
+        }else if (isLiked){
+            const res = await axios.put("../api/user?type=remove",{
+                email:values.email,
+                productId:props.id
+            });
+            if(res.status==200){
+                setIsLiked(false);
+            }
+        }
+    }
+
+
 
     return (
         <div className="md:h-72 md:w-64 h-56 w-full p-2 shadow-lg rounded-lg relative">
-            <div className="absolute bg-white right-6 top-3 px-2 rounded-full py-1 cursor-pointer text-orange-600">
-                <FontAwesomeIcon icon={faHeart}/>
+            <div className="absolute bg-white right-6 top-3 px-2 rounded-full py-1 cursor-pointer text-orange-600" onClick={()=>{likeHandler()}}>
+                {!isLiked && <FontAwesomeIcon icon={faHeart}/>}
+                {isLiked && <FontAwesomeIcon icon={faHeartCircleCheck}/>}
             </div>
             <div className="h-36 md:h-48 rounded-md">
                 <Image src={props.image} className="rounded-md w-full md:h-48 h-36 px-2" width={500} height={500} alt={props.productName} />
