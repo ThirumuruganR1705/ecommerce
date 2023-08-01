@@ -54,13 +54,13 @@ function Productcard(props) {
 
 
     return (
-        <div className="md:h-72 md:w-64 h-56 w-full p-2 shadow-lg rounded-lg relative">
-            <div className="absolute bg-white right-6 top-3 px-2 rounded-full py-1 cursor-pointer text-orange-600" onClick={()=>{likeHandler()}}>
+        <div className="md:h-72 md:w-64 h-60 w-full p-2 shadow-lg rounded-lg relative">
+            {props.page=="home"&&<div className="absolute bg-white right-6 top-3 px-2 rounded-full py-1 cursor-pointer text-orange-600" onClick={()=>{likeHandler()}}>
                 {!isLiked && <FontAwesomeIcon icon={faHeart}/>}
                 {isLiked && <FontAwesomeIcon icon={faHeartCircleCheck}/>}
-            </div>
-            <div className="h-36 md:h-48 rounded-md">
-                <Image src={props.image} className="rounded-md w-full md:h-48 h-36 px-2" width={500} height={500} alt={props.productName} />
+            </div>}
+            <div className="h-40 md:h-48 rounded-md">
+                <Image src={props.image} className="rounded-md w-full md:h-48 h-40 px-2" width={500} height={500} alt={props.productName} />
             </div>
             <div className="h-16">
                 <div  className="flex text-xs md:text-lg justify-between font-bold py-1 md:py-1">

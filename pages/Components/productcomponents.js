@@ -35,7 +35,7 @@ function Productcomponent() {
             <div className="grid gap-2 p-2 grid-cols-2 md:flex justify-between">
                 {products.map((data) => (
                     <div key={data._id}>
-                        <Productcard productName={data.productName} price={data.price} image={data.Images[0]} id={data._id} />
+                        <Productcard productName={data.productName} price={data.price} image={data.Images[0]} id={data._id} page="home" />
                     </div>
                 ))}
             </div>
