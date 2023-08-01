@@ -140,7 +140,7 @@ const Layout = ({ children }) => {
                     <div className={router.pathname == "/new" ? "py-2 ml-2 bg-white text-orange-600" : "py-2 ml-2 "} onClick={() => { router.push("../new") }}>
                         <p>What's New</p>
                     </div>
-                    <div className={router.pathname == "/liked" ? "py-2 ml-2 bg-white text-orange-600" : "py-2 ml-2 "} onClick={() => { router.push("../liked") }}>
+                    <div className={router.pathname == "/likedproducts" ? "py-2 ml-2 bg-white text-orange-600" : "py-2 ml-2 "} onClick={() => { router.push("../likedproducts") }}>
                         <p>Liked</p>
                     </div>
                     <div className={router.pathname == "/cart" ? "py-2 ml-2 bg-white text-orange-600" : "py-2 ml-2 "} onClick={() => { router.push("../cart") }}>
