@@ -23,7 +23,6 @@ function LikedProducts() {
             const result = await axios.post("./api/product?type=get", {
                 id: res.data.message.liked[i]
             });
-            console.log(i);
             setProducts((pre) =>  [...pre, result.data.message] );
             i++;
         }
