@@ -1,6 +1,6 @@
 import newContext from "@/Context";
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState ,useRef} from "react";
 import Layout from "./Layout";
 import Productcard from "./Components/productcard";
 import { BeatLoader } from "react-spinners";
