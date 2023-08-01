@@ -132,18 +132,18 @@ const Layout = ({ children }) => {
                         <h2 className="font-bold text-xl py-5">Shopkart</h2>
                     </div>
                     <div className={router.pathname == "/" ? "py-2 ml-2 bg-white text-orange-600" : "py-2 ml-2 "}>
-                        <p onClick={() => { router.push("./") }}>Home</p>
+                        <p onClick={() => { router.push("../") }}>Home</p>
                     </div>
-                    <div className={router.pathname == "/categories" ? "py-2 ml-2 bg-white text-orange-600" : "py-2 ml-2 "}>
+                    <div className={router.pathname == "/categories" ? "py-2 ml-2 bg-white text-orange-600" : "py-2 ml-2 "} onClick={() => { router.push("./categories") }}>
                         <p>categories</p>
                     </div>
-                    <div className={router.pathname == "/new" ? "py-2 ml-2 bg-white text-orange-600" : "py-2 ml-2 "}>
+                    <div className={router.pathname == "/new" ? "py-2 ml-2 bg-white text-orange-600" : "py-2 ml-2 "} onClick={() => { router.push("../new") }}>
                         <p>What's New</p>
                     </div>
-                    <div className={router.pathname == "/liked" ? "py-2 ml-2 bg-white text-orange-600" : "py-2 ml-2 "}>
+                    <div className={router.pathname == "/liked" ? "py-2 ml-2 bg-white text-orange-600" : "py-2 ml-2 "} onClick={() => { router.push("../liked") }}>
                         <p>Liked</p>
                     </div>
-                    <div className={router.pathname == "/cart" ? "py-2 ml-2 bg-white text-orange-600" : "py-2 ml-2 "}>
+                    <div className={router.pathname == "/cart" ? "py-2 ml-2 bg-white text-orange-600" : "py-2 ml-2 "} onClick={() => { router.push("../cart") }}>
                         <p>Cart</p>
                     </div>
                     <div className="py-2 pl-2 flex justify-center">
@@ -152,10 +152,10 @@ const Layout = ({ children }) => {
                             <p className=" text-orange-500 bg-gray-200 h-10 flex items-center w-10 justify-center rounded-full cursor-pointer"><FontAwesomeIcon icon={faMagnifyingGlass} /></p>
                         </div>
                     </div>
-                    <div className={router.pathname == "/account" ? "py-2 ml-2 bg-white text-orange-600" : "py-2 ml-2 "}>
+                    <div className={router.pathname == "/account" ? "py-2 ml-2 bg-white text-orange-600" : "py-2 ml-2 "} onClick={() => { router.push("../account") }}>
                         <p>Account</p>
                     </div>
-                    {values.email == "thiru@gmail.com" && <div className={router.pathname == "/admin" ? "py-2 ml-2 bg-white text-orange-600" : "py-2 ml-2 "}>
+                    {values.email == "thiru@gmail.com" && <div className={router.pathname == "/admin" ? "py-2 ml-2 bg-white text-orange-600" : "py-2 ml-2 "} onClick={() => { router.push("../admin") }}>
                         <p onClick={() => { router.push("./admin") }}>Admin Dashboard</p>
                     </div>}
                 </div>
