@@ -60,7 +60,7 @@ function Productcomponent() {
             </div>
             <div className="hidden" ref={confirmationRef} >
                 <div className="flex flex-col items-center rounded-md  justify-evenly">
-                    <div className="md:w-[20rem] w-[19rem] h-20 bg-white px-2 py-1 rounded-md shadow-lg">
+                    <div className="md:w-[20rem] w-[20rem] h-20 bg-white px-2 py-1 rounded-md shadow-lg">
                         <h2 className="text-orange-500 font-semibold text-center py-1">You need to login to continue</h2>
                         <div className="flex justify-center gap-6 py-1">
                             <button className="bg-green-500 text-white px-2 py-1 rounded-md cursor-pointer" onClick={()=>{router.push("../login")}}>Login</button>
