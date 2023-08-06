@@ -11,21 +11,13 @@ function LikedProducts() {
     const loaderref = useRef();
     const [values, setValues] = useContext(newContext);
     console.log(products);
-    var i=0;
 
     const fetchProducts = async () => {
         loaderref.current.className = "flex w-full justify-center items-center h-[70vh]";
         const res = await axios.post("./api/user?type=get", {
             email: values.email
         });
-        console.log(res.data.message.liked);
-        while ( i < res.data.message.liked.length) {
-            const result = await axios.post("./api/product?type=get", {
-                id: res.data.message.liked[i]
-            });
-            setProducts((pre) =>  [...pre, result.data.message] );
-            i++;
-        }
+        setProducts(res.data.message);
         loaderref.current.className = "hidden";
     }
 

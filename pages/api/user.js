@@ -1,5 +1,7 @@
 import connectMongo from "@/lib/mongoose";
+import Products from "@/models/product";
 import { User } from "@/models/user";
+import mongoose from "mongoose";
 
 export default async function user(req, res) {
     if (req.method == "POST") {
@@ -38,17 +40,30 @@ export default async function user(req, res) {
             }
         }else if (req.query.type=="get"){
             const {email} = req.body;
-            const result  = await User.findOne({email:email});
-            return res.status(200).json({message:result});
+            const result  = await User.findOne({email:email}).populate("liked");
+            console.log(result.liked);
+            return res.status(200).json({message:result.liked});
         }
     } else if (req.method == "PUT") {
         if (req.query.type == "add") {
             const { email, productId } = req.body;
-            const result = await User.updateOne({ email: email }, { $push: { liked: productId } });
+            let session = await mongoose.startSession();
+            session.startTransaction();
+            const product = await Products.findOne({_id:productId});
+            const user = await User.findOne({email:email});
+            user.liked.push(product);
+            await user.save({session});
+            await session.commitTransaction();
             return res.status(200).json({message:"added"});
         } else if (req.query.type == "remove") {
             const { email, productId } = req.body;
-            const result = await User.updateOne({ email: email }, { $pull: { liked: productId } });
+            let session = await mongoose.startSession();
+            session.startTransaction();
+            const product = await Products.findOne({_id:productId});
+            const user = await User.findOne({email:email});
+            user.liked.pull(product);
+            await user.save({session});
+            await session.commitTransaction();
             return res.status(200).json({message:"removed"});
         }
     }
