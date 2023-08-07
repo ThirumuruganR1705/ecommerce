@@ -9,7 +9,7 @@ const CategoryList = () => {
     const [categories, setCategories] = useState([]);
 
     const fetchCategories = async () => {
-        const res = await axios.get("../api/category");
+        const res = await axios.get("../api/category?type=all");
         console.log(res.data.message);
         setCategories(() => { return res.data.message });
     }

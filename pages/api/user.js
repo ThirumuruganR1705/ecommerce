@@ -41,7 +41,6 @@ export default async function user(req, res) {
         }else if (req.query.type=="get"){
             const {email} = req.body;
             const result  = await User.findOne({email:email}).populate("liked");
-            console.log(result.liked);
             return res.status(200).json({message:result.liked});
         }
     } else if (req.method == "PUT") {

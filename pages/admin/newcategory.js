@@ -2,13 +2,18 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { ToastContainer,toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-
+import { getDownloadURL, listAll, ref, uploadBytesResumable } from "firebase/storage";
+import storage from "@/lib/firebase";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUpFromBracket } from "@fortawesome/free-solid-svg-icons";
 const Newcategory = () => {
 
     const [categories, setCategories] = useState([]);
+    const [imgurl, setImgurl] = useState([]);
     const [inputs, setInputs] = useState({
         categoryName: "",
-        parentCategory: ""
+        parentCategory: "",
+        image:""
     });
 
     // console.log(inputs);
@@ -25,13 +30,64 @@ const Newcategory = () => {
     const clickHandler = async () => {
         const res = await axios.post("../api/category", {
             categoryName: inputs.categoryName,
-            parentCategory: inputs.parentCategory
+            parentCategory: inputs.parentCategory,
+            image:inputs.image
         });
         if (res.status == 200) {
             setInputs(()=>({categoryName:"",parentCategory:"0"}))
             const notify = () => toast.success("Created");
             notify();
         }
+    }
+
+    const imageUpload = (e) => {
+        console.log("start");
+        console.log(e.target.files[0]);
+        // setFile(() => { return e.target.files[0] });
+        const storageRef = ref(storage, "/images/" + e.target.files[0].name);
+        const uploadTask = uploadBytesResumable(storageRef, e.target.files[0]);
+        console.log(uploadTask);
+        uploadTask.on("state_changed",
+            (snapshot) => {
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log('Upload is ' + progress + '% done');
+
+                switch (snapshot.state) {
+                    case 'paused':
+                        console.log('Upload is paused');
+                        break;
+                    case 'running':
+                        console.log('Upload is running');
+                        // const notify = () => toast.success('Uploading');
+                        // notify();
+                        break;
+                }
+            },
+            (error) => {
+                switch (error.code) {
+                    case 'storage/unauthorized':
+                        break;
+                    case 'storage/canceled':
+                        break;
+                    case 'storage/unknown':
+                        break;
+                }
+            },
+            () => {
+                getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+                    console.log(url);
+                    setImgurl(data => [...data, url]);
+                    setInputs((pre) => ({ ...pre, image: url }));
+                    // const notify = () => toast.success('Uploaded');
+                    notify();
+                })
+            }
+        )
+
+
+
+        // listAll(ref(storage, "images")).then(data => { console.log(data); })
+
     }
 
     return (
@@ -64,6 +120,17 @@ const Newcategory = () => {
                                 <option value={cat.categoryName} key={cat._id}>{cat.categoryName}</option>
                             ))}
                         </select>
+                    </div>
+                </div>
+                <div>
+                    <p className="text-sm text-orange-600 pb-3">Images</p>
+                    <div className="grid grid-cols-3 md:flex">
+                        <label>
+                            <div>
+                                <input type="file" className="hidden" onChange={(e) => { imageUpload(e) }} />
+                                <span><FontAwesomeIcon icon={faArrowUpFromBracket} className="h-12 text-gray-400 border p-5 rounded-md" /></span>
+                            </div>
+                        </label>
                     </div>
                 </div>
                 <div>

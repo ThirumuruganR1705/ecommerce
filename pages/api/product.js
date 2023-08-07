@@ -20,7 +20,6 @@ const product = async (req, res) => {
             }).catch((e) => {
                 res.status(403).json({ message: e });
             })
-            console.log("Uploaded");
         }
     }
 
