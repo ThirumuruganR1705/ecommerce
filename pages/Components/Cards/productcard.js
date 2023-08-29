@@ -95,7 +95,7 @@ function Productcard(props) {
                 <p className="md:text-[6px] text-xs text-gray-600">{props.desc}</p>
             </div>
             <div>
-                <button className="md:text-xs text-[2px] border py-1 px-2 rounded-full border-green-700 hover:bg-green-700 hover:text-white">Add to Cart</button>
+                <button className="text-xs border py-1 px-2 rounded-full border-green-700 hover:bg-green-700 hover:text-white">Add to Cart</button>
             </div>
             <div className="absolute top-1 right-1 md:top-2 md:right-2">
                 <p className="text-xs md:text-sm bg-white px-[5px] py-[3px] rounded-full cursor-pointer">
