@@ -8,7 +8,9 @@ import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import axios from 'axios';
 import { useRef } from 'react';
-import Productcomponent from './Components/productcomponents';
+import Productcomponent from './Components/productComponent';
+import SpecialOffer from './Components/Cards/specialOffer';
+import Categories from './categories';
 
 export default function Home() {
 
@@ -17,31 +19,25 @@ export default function Home() {
   const [categories, setCategories] = useState([]);
 
   const fetchCategories = async () => {
-    const res = await axios.get("./api/category");
-    console.log(res.data.message);
-    setCategories(() => { return res.data.message })
+    // const res = await axios.get("./api/category");
+    // console.log(res.data.message);
+    const res = await axios.get("http://localhost:1337/api/categories");
+    console.log(res.data.data);
+    setCategories(() => { return res.data.data })
   }
-
-  // const windowsixe = useRef(window.innerWidth)
-
-  // console.log(windowsixe.current);
 
   useEffect(() => {
     fetchCategories();
   }, [])
 
-  const clickHandler = () => {
-    if (values.isloggedIn) {
-      setValues({ email: "", isloggedIn: false });
-    } else {
-      router.push("/login");
-    }
-  }
-
   return (
     <Layout>
       <div>
-        <Productcomponent/>
+        <SpecialOffer />
+        <div className='md:hidden'>
+          <Categories />
+        </div>
+        <Productcomponent />
       </div>
     </Layout>
   )

@@ -8,7 +8,7 @@ import axios from 'axios';
 import newContext from "@/Context";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import Image from "next/image";
 const login = () => {
 
     const [reg, setReg] = useState(false);
@@ -76,7 +76,7 @@ const login = () => {
                     <p className="">{!reg ? "New User? " : "Existing User? "}<span className="text-orange-400 cursor-pointer" onClick={() => { setReg(!reg) }}>{!reg ? "Sign Up" : "Sign In"}</span></p>
                 </div>
                 <div className="w-1/2 h-full hidden md:block">
-                    <img src="https://brandesignhub.com/images/quote_banner.png" className="w-full" />
+                    <Image src="https://brandesignhub.com/images/quote_banner.png" className="w-full" width={500} height={500} />
                 </div>
                 <div className="md:w-1/2">
                     <p className="text-2xl md:text-4xl font-bold md:tracking-wide mb-1">Welcome Back!</p>

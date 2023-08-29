@@ -2,7 +2,7 @@ import newContext from "@/Context";
 import axios from "axios";
 import { useContext, useEffect, useState ,useRef} from "react";
 import Layout from "./Layout";
-import Productcard from "./Components/productcard";
+import Productcard from "./Components/Cards/productcard";
 import { BeatLoader } from "react-spinners";
 
 function LikedProducts() {
