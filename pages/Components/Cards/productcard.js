@@ -92,7 +92,7 @@ function Productcard(props) {
                 </div>
             </div>
             <div className="md:pb-2 pb-1">
-                <p className="md:text-[6px] text-[2px] text-gray-600">{props.desc}</p>
+                <p className="md:text-[6px] text-xs text-gray-600">{props.desc}</p>
             </div>
             <div>
                 <button className="md:text-xs text-[2px] border py-1 px-2 rounded-full border-green-700 hover:bg-green-700 hover:text-white">Add to Cart</button>
