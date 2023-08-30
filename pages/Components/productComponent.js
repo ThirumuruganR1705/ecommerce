@@ -9,7 +9,7 @@ function ProductComponent() {
                     Products For You!
                 </h2>
             </div>
-            <div className="mt-2 flex flex-wrap justify-between gap-4">
+            <div className="mt-2 flex flex-wrap justify-evenly gap-8">
                 <Productcard image={img} productName="Headphones" price="1999" desc="A perfect balance of high-fidelity audio"/>
                 <Productcard image={img} productName="Headphones" price="1999" desc="A perfect balance of high-fidelity audio"/>
                 <Productcard image={img} productName="Headphones" price="1999" desc="A perfect balance of high-fidelity audio"/>

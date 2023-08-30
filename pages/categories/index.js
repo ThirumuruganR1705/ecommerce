@@ -6,18 +6,18 @@ import Category from "../Components/category";
 
 function Categories() {
 
-    const [categories, setCategories] = useState([]);
-    console.log(categories.length);
+    // const [categories, setCategories] = useState([]);
+    // console.log(categories.length);
 
-    const fetchCategories = async () => {
-        const res = await axios.get("http://localhost:1337/api/categories?populate=*");
-        console.log(res.data.data);
-        setCategories(res.data.data);
-    }
+    // const fetchCategories = async () => {
+    //     const res = await axios.get("http://localhost:1337/api/categories?populate=*");
+    //     console.log(res.data.data);
+    //     setCategories(res.data.data);
+    // }
 
-    useEffect(() => {
-        fetchCategories();
-    }, [])
+    // useEffect(() => {
+    //     fetchCategories();
+    // }, [])
 
     return (
         <div className="">
