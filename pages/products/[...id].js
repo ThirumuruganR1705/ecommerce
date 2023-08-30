@@ -99,7 +99,7 @@ function Productviewer() {
                             </div>
                             <div>
                                 <p>Free Delivery</p>
-                                <p className="md:text-xs text-[11px]  border-b border-b-black font-extralight cursor-pointer">Enter your Postal Code for Delivery Availability</p>
+                                <p className="md:text-xs text-[11px]  md:border-b border-b-black font-extralight cursor-pointer">Enter your Postal Code for Delivery Availability</p>
                             </div>
                         </div>
                         <div className="flex flex-col md:flex-row gap-2">
