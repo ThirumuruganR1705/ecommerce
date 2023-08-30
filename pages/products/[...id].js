@@ -114,12 +114,12 @@ function Productviewer() {
                     </div>
                 </div>
             </div>
-            <div className="py-5 hidden md:block">
+            <div className="py-5 ">
                 <h2 className="pb-5 text-lg font-semibold">Specifications</h2>
                 <div className="flex flex-col md:flex-row justify-between gap-5">
-                    <div className="w-1/2 bg-gray-300">
-                        <h2 className="px-5 py-3 text-white font-bold text-lg">General Details</h2>
-                        <table className="w-full border-gray-300 border-spacing-2 border-separate">
+                    <div className="md:w-1/2 w-full bg-gray-300">
+                        <h2 className="md:px-5 py-3 text-white font-bold text-lg">General Details</h2>
+                        <table className="w-full md:border-spacing-1 md:border-separate">
                             <tr className="bg-white">
                                 <th>Brand</th>
                                 <td>Apple</td>
@@ -142,9 +142,9 @@ function Productviewer() {
                             </tr>
                         </table>
                     </div>
-                    <div className="w-1/2 bg-gray-300">
-                        <h2 className="px-5 py-3 text-white font-bold text-lg">Product Details</h2>
-                        <table className="w-full border border-gray-300 border-spacing-2 border-separate">
+                    <div className="md:w-1/2 w-full bg-gray-300">
+                        <h2 className="px-5 py-3  text-white font-bold text-lg">Product Details</h2>
+                        <table className="w-full md:border-spacing-2 md:border-separate">
                             <tr className="bg-white">
                                 <th>Brand</th>
                                 <td>Apple</td>
