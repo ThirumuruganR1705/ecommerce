@@ -118,7 +118,7 @@ function Productviewer() {
                 <h2 className="pb-5 text-lg font-semibold">Specifications</h2>
                 <div className="flex flex-col md:flex-row justify-between gap-5">
                     <div className="md:w-1/2 w-full bg-gray-300">
-                        <h2 className="md:px-5 py-3 text-white font-bold text-lg">General Details</h2>
+                        <h2 className="px-5 py-3 text-white font-bold text-lg">General Details</h2>
                         <table className="w-full md:border-spacing-1 md:border-separate">
                             <tr className="bg-white">
                                 <th>Brand</th>
